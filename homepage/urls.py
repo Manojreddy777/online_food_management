@@ -11,6 +11,9 @@ urlpatterns = [
     path('loggedin/', views.loggedIn, name="loggedin" ),
     path('logout/', views.logoutUser, name="logout" ),
     path('register/', views.registerUser, name="register" ),
+    path('error-test/', views.error_test_view, name='error_test'),
+    path('debug_test_view/', views.debug_test_view, name='debug_test_view'),
+
     # path('feedback/', views.feedback, name="feedback" )
 
 ]

@@ -111,3 +111,31 @@ def custom_404_view(request, exception):
 
 # middleware.py
 
+from django.http import HttpResponse
+import logging
+
+logger = logging.getLogger('django')
+
+def error_test_view(request):
+    try:
+        # This line will raise a ZeroDivisionError
+        result = 1 / 0
+    except Exception as e:
+        # Log the error
+        logger.error(f"An error occurred: {e}")
+        return HttpResponse("An error occurred and has been logged.")
+from django.http import HttpResponse
+import logging
+
+logger = logging.getLogger('django')
+
+def debug_test_view(request):
+    logger.debug("This is a DEBUG message")
+    logger.info("This is an INFO message")
+    logger.warning("This is a WARNING message")
+    try:
+        # Intentionally cause an error
+        result = 1 / 0
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+    return HttpResponse("Check django_errors.log for log entries.")
