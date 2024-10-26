@@ -54,8 +54,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'homepage.middleware.RequireLoginMiddleware',
+    'customers.middleware.RequireLoginMiddleware',
+    'vendorPortal.middleware.RequireLoginMiddleware',
     'homepage.middleware.RedirectInvalidUrlsMiddleware',
     'customers.middleware.RedirectInvalidUrlsMiddleware',
+    'vendorPortal.middleware.RedirectInvalidUrlsMiddleware',
+    'customers.middleware.ExceptionLoggingMiddleware',
+    'homepage.middleware.ExceptionLoggingMiddleware',
+    'vendorPortal.middleware.ExceptionLoggingMiddleware',
+
 
     # Add your middleware here
 
