@@ -1,0 +1,22 @@
+{
+    "builds": [
+        {
+            "src": "OnlineFoodManagement/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.9"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "OnlineFoodManagement/wsgi.py"
+        }
+    ],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "OnlineFoodManagement.settings",
+        "DATABASE_URL": "db.sqlite"
+    }
+}

@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url("{% static 'images/restarent.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .user_card {
+            width: 100%;
+            max-width: 350px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.4);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+            border-radius: 15px;
+        }
+
+        #form-title {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group-text {
+            background: #ffeb3b;
+            color: black;
+            border: 0;
+            border-radius: 0.25rem 0 0 0.25rem;
+        }
+
+        .form-control {
+            border: 1px solid #ff9800;
+            border-radius: 0.25rem;
+        }
+
+        .form-control:focus {
+            border-color: #ff5722;
+            box-shadow: none;
+        }
+
+        .login_btn {
+            width: 100%;
+            background: #ff5722;
+            color: white !important;
+            transition: background 0.3s;
+            border: none;
+        }
+
+        .login_btn:hover {
+            background: #e64a19 !important;
+        }
+
+        .register_btn {
+            background: #42a5f5;
+            color: white !important;
+            margin-top: 10px;
+            transition: background 0.3s;
+            padding: 8px 30px;
+        }
+
+        .register_btn:hover {
+            background: #1e88e5 !important;
+        }
+
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .top-right-buttons .btn {
+            margin-left: 10px;
+            background-color: #f7ba5b;
+            color: white;
+        }
+
+        .alert-error {
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+        }
+
+        .alert-success {
+            background-color: #5cb85c;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-right-buttons">
+        <a href="vendorPortal" class="btn">Vendor</a>
+        <a href="admin/" class="btn">Admin</a>
+    </div>
+
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">Login</h3>
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            <div class="d-flex justify-content-center form_container">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" required name="username" placeholder="Username..." class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" required name="password" placeholder="Password..." class="form-control">
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input class="btn login_btn" type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <p>New User? <a href="{% url 'register' %}" class="btn register_btn">Register</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
