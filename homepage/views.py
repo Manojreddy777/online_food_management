@@ -139,3 +139,11 @@ def debug_test_view(request):
     except Exception as e:
         logger.error(f"An error occurred: {e}")
     return HttpResponse("Check django_errors.log for log entries.")
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+def test_logging(request):
+    logger.error("This is a test error log.")
+    return HttpResponse("Logged an error.")

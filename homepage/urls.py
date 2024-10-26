@@ -13,6 +13,7 @@ urlpatterns = [
     path('register/', views.registerUser, name="register" ),
     path('error-test/', views.error_test_view, name='error_test'),
     path('debug_test_view/', views.debug_test_view, name='debug_test_view'),
+    path('test_logging/', views.test_logging, name='test_logging'),
 
     # path('feedback/', views.feedback, name="feedback" )
 

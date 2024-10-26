@@ -166,42 +166,25 @@ sentry_sdk.init(
 
 
 
+
 import os
-import logging
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'ERROR',  # Change to 'DEBUG' to log all messages
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'django_errors.log'),  # Creates the log file in the base directory
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
             'level': 'DEBUG',  # Change to 'DEBUG' to log all messages
-            'propagate': True,
-        },
-    },
-}
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'django_errors.log'),  # Log file path for errors
+            'filename': os.path.join(BASE_DIR, 'django_errors.log'),  # Ensure this path is correct
         },
     },
     'loggers': {
         'django': {
             'handlers': ['file'],
-            'level': 'ERROR',
+            'level': 'DEGUG',  # Change to 'DEBUG' to log all messages
             'propagate': True,
         },
     },
